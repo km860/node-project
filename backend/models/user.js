@@ -4,11 +4,27 @@ const validator = require('validator')
 const _ = require('lodash');
 const bcrypt = require('bcryptjs')
 
+// Create Schema
 const UserSchema = new mongoose.Schema({
-  username: {
+  name: {
     type: String,
     required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  avatar: {
+    type: String,
+  },
+  communities: {
+    type: Array
   }
+
 })
 
 const User = mongoose.model('User', UserSchema)

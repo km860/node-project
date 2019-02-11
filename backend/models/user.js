@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose');
 const validator = require('validator')
-const _ = require('lodash');
 const bcrypt = require('bcryptjs')
 
 // Create Schema

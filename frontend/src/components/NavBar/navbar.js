@@ -3,11 +3,7 @@
 /** @jsx jsx */
 import React from 'react';
 import { jsx, css } from '@emotion/core'
-import slashIcon from '../../assets/slash.svg'
-import homeIcon from '../../assets/home.svg'
-import notificationIcon from '../../assets/notification.svg'
-import messageIcon from '../../assets/paper-plane.svg'
-import exploreIcon from '../../assets/telescope.svg'
+import { SlashIcon, HomeIcon, MessageIcon, ExploreIcon, NotificationIcon } from '../UI/Icons'
 
 const navContainer = css`
   height: 50px;
@@ -61,24 +57,25 @@ const navbar = (props) => {
     <div css={navContainer}>
       <div css={navGroup}>  
         <div css={navItem}>
-          <div css={imgContainer}><img src={slashIcon} alt=""/></div>
+          <div css={imgContainer}><SlashIcon width={32} fill="#7b16ff" /></div>
         </div>
         <div css={navItem}>
-          <div css={imgContainer}><img src={homeIcon} alt=""/></div>
+          <div css={imgContainer}><HomeIcon width={32} fill="#fff" /></div>
           <p>Home</p>
         </div>
         <div css={navItem}>
-          <div css={imgContainer}><img src={messageIcon} alt=""/></div>
+          <div css={imgContainer}><MessageIcon width={32} fill="#fff" /></div>
+          {/* <div css={imgContainer}><img src={messageIcon} alt=""/></div> */}
           <p>Messages</p>
         </div>
         <div css={navItem}>
-          <div css={imgContainer}><img src={exploreIcon} alt=""/></div>
+          <div css={imgContainer}><ExploreIcon width={32} fill="#fff" /></div>
           <p>Explore</p>
         </div>
       </div>
       <div css={navGroup}>
         <div css={navItem}>
-          <div css={imgContainer}><img src={notificationIcon} alt=""/></div>
+          <div css={imgContainer}><NotificationIcon width={32} fill="#fff" /></div>
           <div css={avatar}><span>K</span></div>
         </div>
       </div>

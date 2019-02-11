@@ -32,7 +32,7 @@ app.use('/api/posts', posts)
 app.get('/', (req, res) => {
   res.send('Hello')
 })
-app.post('/users', (req, res, next) => {
+/* app.post('/users', (req, res, next) => {
   let body = _.pick(req.body, ['username']);
   let user = new User(body);
 
@@ -42,7 +42,7 @@ app.post('/users', (req, res, next) => {
   }).catch((e) => {
     res.status(400).send(e);
   })
-});
+}); */
 
 app.listen(port, () => {
   console.log(`Started up at port ${port}...`)

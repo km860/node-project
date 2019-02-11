@@ -1,7 +1,9 @@
 
 import React, { Component } from 'react';
-import NavBar from './components/NavBar/navbar'
 import axios from 'axios'
+
+import NavBar from './components/NavBar/NavBar'
+import RegisterForm from './components/Auth/RegisterForm'
 class App extends Component {
   constructor (props) {
     super(props)
@@ -38,8 +40,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <NavBar />
         <input type="text" value={this.state.value} onChange={this.handleChange} />
         <button onClick={this.handleClick}>add</button>
+        <RegisterForm />
       </div>
     );
   }

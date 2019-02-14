@@ -64,21 +64,24 @@ const navbar = (props) => {
           <div css={imgContainer}><HomeIcon width={24} fill="#fff" /></div>
           <p>Home</p>
         </div>
-        <div css={navItem}>
+        {props.isAuth &&
+        (<div css={navItem}>
           <div css={imgContainer}><MessageIcon width={24} fill="#fff" /></div>
           {/* <div css={imgContainer}><img src={messageIcon} alt=""/></div> */}
           <p>Messages</p>
-        </div>
+        </div>)}
         <div css={navItem}>
           <div css={imgContainer}><ExploreIcon width={24} fill="#fff" /></div>
           <p>Explore</p>
         </div>
       </div>
       <div css={navGroup}>
-        <div css={navItem}>
+      {props.isAuth ? 
+        (<div css={navItem}>
           <div css={imgContainer}><NotificationIcon width={24} fill="#fff" /></div>
           <div css={avatar}><span>K</span></div>
-        </div>
+        </div>) : 
+        <div css={navItem}><p css={{color: 'white'}}>Sign In</p></div>}
       </div>
     </div>
   )

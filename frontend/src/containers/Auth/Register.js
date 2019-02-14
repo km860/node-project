@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
-/*import { connect } from 'react-redux' */
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import axios from 'axios'
+import * as actions from '../../actions/'
 import RegisterForm from '../../components/Auth/RegisterForm'
+
 class Register extends Component {
   constructor () {
     super();
@@ -17,9 +21,17 @@ class Register extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({errors: nextProps.errors})
+    }
+  }
+
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value, errors: {...this.state.errors, [e.target.name]: '' }});
   }
+
   handleSubmit(e) {
     e.preventDefault()
     const newUser = {
@@ -30,15 +42,8 @@ class Register extends Component {
       password2: this.state.password2,
     }
     console.log(newUser)
-    
-    axios.post('/api/users/register', newUser)
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err.response.data)
-        this.setState({...this.state, errors: err.response.data})
-      })
+    this.props.registerUser(newUser, this.props.history)
+    /* */
   }
 
   render() {
@@ -59,12 +64,21 @@ class Register extends Component {
   }
 }
 
-/* const mapStateToProps = (state) => ({
-  
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors
 })
 
-const mapDispatchToProps = {
-  
+const mapDispatchToProps = dispatch => {
+  return {
+    registerUser: (data, history) => dispatch(actions.registerUser(data, history))
+  }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Register) */
-export default Register
+
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+}
+//export default Register
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Register))

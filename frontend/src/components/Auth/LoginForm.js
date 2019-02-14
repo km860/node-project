@@ -17,7 +17,8 @@ const inputGroup = css`
   width: 100%;
   margin-bottom: 30px;
   label {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     color: #8c8c8c;
     font-size: 13px;
     font-weight: bold;
@@ -47,7 +48,8 @@ const linkSpan = css`
 `
 
 const Danger = styled.span`
-  margin-top: 5px;
+  display: block;
+  align-self: center;
   font-size: 10px;
   font-weight: bold;
   color: red;

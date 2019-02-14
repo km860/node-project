@@ -1,33 +1,44 @@
 
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
-import axios from 'axios'
-
+import { withRouter, Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 import NavBar from './components/NavBar/NavBar'
-import RegisterForm from './components/Auth/RegisterForm'
 import Register from './containers/Auth/Register'
 import Login from './containers/Auth/Login'
-import LoginForm from './components/Auth/LoginForm'
+
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      value: ''
+      isAuth: true
     }
     
   }
 
   render() {
     return (
-      <BrowserRouter>
-        <div className="App">
-          <NavBar />
+      <div className="App">
+          <NavBar isAuth={this.state.isAuth} />
+        <Switch>
           <Route path="/" exact component={Register} />
           <Route path="/login" component={Login} />
-        </div>
-      </BrowserRouter>
+        </Switch>
+      </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+

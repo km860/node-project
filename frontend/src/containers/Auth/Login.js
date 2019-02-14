@@ -11,7 +11,8 @@ class Login extends Component {
     super()
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      errors: {}
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -38,6 +39,7 @@ class Login extends Component {
           handleSubmit={this.handleSubmit}
           email={this.state.email}
           password={this.state.password}
+          errors={this.state.errors}
         />
       </div>
     )

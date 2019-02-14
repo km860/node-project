@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-/* import PropTypes from 'prop-types'
-import { connect } from 'react-redux' */
+/*import { connect } from 'react-redux' */
 import axios from 'axios'
 import RegisterForm from '../../components/Auth/RegisterForm'
 class Register extends Component {
@@ -18,11 +17,8 @@ class Register extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  /* static propTypes = {
-    prop: PropTypes
-  } */
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value, errors: {...this.state.errors, [e.target.name]: '' }});
   }
   handleSubmit(e) {
     e.preventDefault()
@@ -41,6 +37,7 @@ class Register extends Component {
       })
       .catch(err => {
         console.log(err.response.data)
+        this.setState({...this.state, errors: err.response.data})
       })
   }
 
@@ -55,6 +52,7 @@ class Register extends Component {
           email={this.state.email}
           password={this.state.password}
           password2={this.state.password2}
+          errors={this.state.errors}
         />
       </div>
     )

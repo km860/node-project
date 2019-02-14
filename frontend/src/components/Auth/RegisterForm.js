@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import React from 'react';
 import { jsx, css } from '@emotion/core'
+import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 
 const formContainer = css`
@@ -33,16 +34,27 @@ const inputGroup = css`
     color: #333;
     box-sizing: border-box;
   }
-  span {
-    font-size: 10px;
-    color: #333;
-    display: block;
-    align-self: center;
-    em {
-      text-decoration: underline;
-    }
-  }
+  
 `
+
+const linkSpan = css`
+  font-size: 10px;
+  color: #333;
+  display: block;
+  align-self: center;
+  em {
+    text-decoration: underline;
+  }
+  
+`
+
+const Danger = styled.span`
+  margin-top: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: red;
+`
+
 
 const submitBtn = css`
   background-color: #333;
@@ -71,22 +83,31 @@ const btnContainer = css`
 
 
 const registerForm = (props) => {
+  const { errors } = props;
   return (
     <div css={formContainer}>
-      <form onSubmit={props.handleSubmit}>
+      <form noValidate onSubmit={props.handleSubmit}>
         <div css={inputGroup}>
-          <label htmlFor="">Username</label>
-          <input 
+          <label htmlFor="">
+            Username {errors.username && (
+            <Danger>{errors.username}</Danger>
+          )}
+          </label>
+          <input
             type="text" 
             placeholder="choose a username" 
             name="username"
             value={props.username} 
             onChange={props.handleChange}
-             />
+          />
         </div>
         <div css={inputGroup}>
-          <label htmlFor="">Name</label>
-          <input 
+          <label htmlFor="">
+            Name {errors.name && (
+            <Danger>{errors.name}</Danger>
+          )}
+          </label>
+          <input
             type="text" 
             placeholder="your name"
             name="name"
@@ -95,7 +116,11 @@ const registerForm = (props) => {
           />
         </div>
         <div css={inputGroup}>
-          <label htmlFor="">Email</label>
+          <label htmlFor="">
+            Email {errors.email && (
+            <Danger>{errors.email}</Danger>
+          )}
+          </label>
           <input 
             type="email" 
             placeholder="your email address"
@@ -105,7 +130,11 @@ const registerForm = (props) => {
           />
         </div>
         <div css={inputGroup}>
-          <label htmlFor="">Password</label>
+          <label htmlFor="">
+            Password {errors.password && (
+            <Danger>{errors.password}</Danger>
+          )}
+          </label>
           <input 
             type="password" 
             placeholder="choose a password"
@@ -115,7 +144,11 @@ const registerForm = (props) => {
           />
         </div>
         <div css={inputGroup}>
-          <label htmlFor="">Confirm password</label>
+          <label htmlFor="">
+            Confirm password {errors.password2 && (
+            <Danger>{errors.password2}</Danger>
+          )}
+          </label>
           <input 
             type="password" 
             placeholder="repeat password"
@@ -126,7 +159,7 @@ const registerForm = (props) => {
         </div>
         <div css={[inputGroup, btnContainer]}>
           <input type="submit" css={submitBtn} value="Sign Up" />
-          <span>Already have an account? <em><Link to="/login">Sign in</Link></em></span>
+          <span css={linkSpan}>Already have an account? <em><Link to="/login">Sign in</Link></em></span>
         </div>
       </form>
     </div>

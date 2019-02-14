@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { jsx, css } from '@emotion/core'
+import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 
 const formContainer = css`
@@ -34,15 +35,22 @@ const inputGroup = css`
     color: #333;
     box-sizing: border-box;
   }
-  span {
-    font-size: 10px;
-    color: #333;
-    display: block;
-    align-self: center;
-    em {
-      text-decoration: underline;
-    }
+`
+const linkSpan = css`
+  font-size: 10px;
+  color: #333;
+  display: block;
+  align-self: center;
+  em {
+    text-decoration: underline;
   }
+`
+
+const Danger = styled.span`
+  margin-top: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: red;
 `
 
 const submitBtn = css`
@@ -71,11 +79,15 @@ const btnContainer = css`
 `
 
 const loginForm = (props) => {
+  const { errors } = props
   return (
     <div css={formContainer}>
-      <form onSubmit={props.handleSubmit}>
+      <form noValidate onSubmit={props.handleSubmit}>
         <div css={inputGroup}>
-          <label htmlFor="">Email</label>
+          <label htmlFor="">
+            Email {errors.email && (
+            <Danger>{errors.email}</Danger>)}
+          </label>
           <input 
             type="email" 
             placeholder="your email address"
@@ -85,7 +97,10 @@ const loginForm = (props) => {
           />
         </div>
         <div css={inputGroup}>
-          <label htmlFor="">Password</label>
+          <label htmlFor="">
+            Password {errors.password && (
+            <Danger>{errors.password}</Danger>)}
+          </label>
           <input 
             type="password" 
             placeholder="choose a password"
@@ -96,7 +111,7 @@ const loginForm = (props) => {
         </div>
         <div css={[inputGroup, btnContainer]}>
           <input type="submit" css={submitBtn} value="Sign In" />
-          <span>Don't have an account? <em><Link to="/">Sign up</Link></em></span>
+          <span css={linkSpan}>Don't have an account? <em><Link to="/">Sign up</Link></em></span>
         </div>
       </form>
     </div>

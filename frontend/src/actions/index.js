@@ -1,1 +1,1 @@
-export { registerUser, loginUser } from './authActions' 
+export { registerUser, loginUser, setCurrentUser, logoutUser } from './authActions' 

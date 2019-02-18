@@ -7,6 +7,7 @@ import setAuthToken from './utils/setAuthToken';
 import * as actions from './actions'
 import store from './store'
 import NavBar from './components/NavBar/NavBar'
+import Home from './Home'
 import Register from './containers/Auth/Register'
 import Login from './containers/Auth/Login'
 
@@ -39,13 +40,21 @@ class App extends Component {
     }
     
   }
+  handleLogout() {
+    store.dispatch(actions.logoutUser());
+    // TODO: Clear current Profile
+
+    // Redirect to login
+    window.location.href = '/login';
+  }
 
   render() {
     return (
       <div className="App">
-          <NavBar isAuth={this.props.auth.isAuthenticated} />
+          <NavBar isAuth={this.props.auth.isAuthenticated} signOut={this.handleLogout} />
         <Switch>
-          <Route path="/" exact component={Register} />
+          <Route path="/" exact component={Home} />
+          <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </Switch>
       </div>

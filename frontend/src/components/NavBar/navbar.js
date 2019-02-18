@@ -16,6 +16,9 @@ const navContainer = css`
 const navGroup = css`
   margin: 0 30px;
   display: flex;
+  &:last-of-type {
+    margin-right: 0;
+  }
 `
 const navItem = css`
   display: flex;
@@ -44,6 +47,7 @@ const avatar = css`
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  margin-right: 15px;
   background-color: white;
   color: #333;
   font-size: 14px;
@@ -80,6 +84,7 @@ const navbar = (props) => {
         (<div css={navItem}>
           <div css={imgContainer}><NotificationIcon width={24} fill="#fff" /></div>
           <div css={avatar}><span>K</span></div>
+          <p onClick={props.signOut}>Sign Out</p>
         </div>) : 
         <div css={navItem}><p css={{color: 'white'}}>Sign In</p></div>}
       </div>

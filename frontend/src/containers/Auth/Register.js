@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import axios from 'axios'
 import * as actions from '../../actions/'
 import RegisterForm from '../../components/Auth/RegisterForm'
 

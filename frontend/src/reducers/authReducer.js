@@ -1,4 +1,4 @@
-import { TEST_DISPATCH, SET_CURRENT_USER } from "../actions/actionTypes";
+import { SET_CURRENT_USER } from "../actions/actionTypes";
 import isEmpty from '../validation/isEmpty'
 const intialState = {
   isAuthenticated: false,

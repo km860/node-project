@@ -3,6 +3,7 @@
 /** @jsx jsx */
 import React from 'react';
 import { jsx, css } from '@emotion/core'
+import { Link } from 'react-router-dom'
 import { SlashIcon, HomeIcon, MessageIcon, ExploreIcon, NotificationIcon } from '../UI/Icons'
 
 const navContainer = css`
@@ -28,6 +29,10 @@ const navItem = css`
     color: white;
     font-size: 14px;
     font-weight: bolder;
+  }
+  a {
+    color: white;
+    text-decoration: none;
   }
 `
 const imgContainer = css`
@@ -58,6 +63,11 @@ const avatar = css`
 
 
 const navbar = (props) => {
+  let name = '';
+  if (Object.keys(props.user).length) {
+    let temp = props.user.name.split('');
+    name = temp[0] + temp[temp.length - 1]
+  }
   return (
     <div css={navContainer}>
       <div css={navGroup}>  
@@ -83,10 +93,10 @@ const navbar = (props) => {
       {props.isAuth ? 
         (<div css={navItem}>
           <div css={imgContainer}><NotificationIcon width={24} fill="#fff" /></div>
-          <div css={avatar}><span>K</span></div>
+          <div css={avatar}><span>{name.toUpperCase()}</span></div>
           <p onClick={props.signOut}>Sign Out</p>
         </div>) : 
-        <div css={navItem}><p css={{color: 'white'}}>Sign In</p></div>}
+        <div css={navItem}><p css={{color: 'white'}}><Link to='/login'>Sign In</Link></p></div>}
       </div>
     </div>
   )

@@ -22,13 +22,14 @@ class Login extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+      this.props.getProfile()
+      this.props.history.push('/');
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/');
     }
     if (nextProps.errors) {
       this.setState({errors: nextProps.errors})
@@ -72,7 +73,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loginUser: (data) => dispatch(actions.loginUser(data))
+    loginUser: (data) => dispatch(actions.loginUser(data)),
+    getProfile: () => dispatch(actions.getCurrentProfile())
   }
   
 }

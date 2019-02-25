@@ -15,7 +15,7 @@ export class Home extends Component {
   render() {
     return (
       <div>
-        <ListCommunities />
+        <ListCommunities communities={this.state.communities} />
       </div>
     )
   }

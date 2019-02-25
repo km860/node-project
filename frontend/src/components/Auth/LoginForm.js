@@ -113,7 +113,7 @@ const loginForm = (props) => {
         </div>
         <div css={[inputGroup, btnContainer]}>
           <input type="submit" css={submitBtn} value="Sign In" />
-          <span css={linkSpan}>Don't have an account? <em><Link to="/">Sign up</Link></em></span>
+          <span css={linkSpan}>Don't have an account? <em><Link to="/register">Sign up</Link></em></span>
         </div>
       </form>
     </div>

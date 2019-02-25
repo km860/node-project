@@ -26,7 +26,7 @@ if (localStorage.jwtToken) {
     // Logout user
     store.dispatch(actions.logoutUser());
     // TODO: Clear current Profile
-
+    store.dispatch(actions.clearCurrentProfile())
     // Redirect to login
     window.location.href = '/login';
   }
@@ -43,7 +43,7 @@ class App extends Component {
   handleLogout() {
     store.dispatch(actions.logoutUser());
     // TODO: Clear current Profile
-
+    
     // Redirect to login
     window.location.href = '/login';
   }
@@ -51,7 +51,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <NavBar isAuth={this.props.auth.isAuthenticated} signOut={this.handleLogout} />
+          <NavBar isAuth={this.props.auth.isAuthenticated} user={this.props.auth.user} signOut={this.handleLogout} />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/register" component={Register} />
@@ -64,7 +64,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    auth: state.auth
+    auth: state.auth,
   }
 }
 

@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
     );
 });
 
-// @route GET api/posts
+// @route POST api/posts
 // @desc Create post
 // @access Private
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {

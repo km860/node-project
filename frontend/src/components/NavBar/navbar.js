@@ -71,12 +71,14 @@ const navbar = (props) => {
   return (
     <div css={navContainer}>
       <div css={navGroup}>  
-        <div css={navItem}>
-          <div css={imgContainer}><SlashIcon width={32} fill="#fff" /></div> {/*7b16ff*/}
-        </div>
+        {/* <div css={navItem}>
+          <div css={imgContainer}><SlashIcon width={32} fill="#fff" /></div> 
+        </div> */}
         <div css={navItem}>
           <div css={imgContainer}><HomeIcon width={24} fill="#fff" /></div>
-          <p>Home</p>
+          <Link to='/'>
+            <p>Home</p>
+          </Link>
         </div>
         {props.isAuth &&
         (<div css={navItem}>

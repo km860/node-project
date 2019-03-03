@@ -32,7 +32,7 @@ const header = css`
 
 const listCommunities = (props) => {
   let communityList = props.communities.map(el => {
-    return <li key={el}><Link to={`/c/${el}`} ><div>{el}</div></Link></li>
+    return <li key={el}><Link to={`/c/${el.replace(/\s/g, '')}`} ><div>{el}</div></Link></li>
   })
   return (
     <div>
